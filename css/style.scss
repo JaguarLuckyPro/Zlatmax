@@ -1,0 +1,419 @@
+// підключаю шрифти
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+// обнуляю
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box; // розмір контейнера
+}
+a {
+	text-decoration: none;
+}
+ul,
+ol,
+li {
+	list-style: none;
+}
+img {
+	vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+body,
+html {
+	min-height: 100%;
+}
+body.lock {
+	overflow: hidden;
+}
+html {
+	line-height: 1;
+	font-family: 'Montserrat';
+	font-weight: 500;
+	font-size: 18px;
+	color: #000;
+	background: #E5E5E5;
+}
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex; // притиск футера до низу
+	flex-direction: column; // притиск футера до низу
+}
+// bounding box (обмежуючий контейнер)
+.__container {
+	max-width: 1607px; // максимальна ширина
+	padding: 0px 15px; // антиприлипальні поля
+	margin: 0 auto; // відцентрування
+	box-sizing: content-box; // антиприлипання до краю
+}
+// [class*="__container"] {
+// 	max-width: 1590px;
+// 	padding: 0px 15px;
+// 	margin: 0 auto;
+// 	box-sizing: content-box;
+// }
+// основна сітка брейкпоінтів
+// pc; // ПК, планшети, деякі планшети в горизонтальному положенні
+// tablet: 991.98 = 992 // планшети, деякі телефони в горизонтальному положенні
+// mobile: 767.98 = 768 // телефони L
+// smallmobile: 479.98 = 480 // телефони S
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~HEADER~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.header {
+// .header__top
+	&__top {
+		background-color: #141414;
+		box-shadow: 0px 4px 20px rgba(169, 169, 169, 0.3);
+	}
+// .header__body
+	// &__body {
+	// }
+// .header__catalog
+	// &__catalog {
+	// }
+}
+.lock-padding {
+}
+.top-header {
+	padding: 10px 0px; // поле безпеки на випадок докидування пунтктів
+// .top-header__container
+	&__container {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		min-height: 50px;
+	}
+// .top-header__menu
+	&__menu {
+		flex: 1 1 auto; // дозволяю розширюватись
+	}
+// .top-header__user
+	&__user {
+		display: flex;
+		&::before {
+			font-size: 28px;
+			margin-right: 15px;
+		}
+		color: #fff;
+		font-family: 'Montserrat';
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 111.111111%; /* 20/18 */
+		// працює на пристроях з мишкою
+		@media (any-hover: hover) {
+			&:hover {
+				span {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+.menu-top-header {
+// .menu-top-header__list
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		row-gap: 5px;
+		column-gap: 60px;
+	}
+// .menu-top-header__item
+	// &__item {
+	// }
+// .menu-top-header__link
+	&__link {
+		color: #fff;
+		font-family: 'Monserrat';
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 125%; /* 20/16 */
+		// працює на пристроях з мишкою
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+.menu {
+// .menu__icon
+	// &__icon {
+	// }
+// .menu__body
+	&__body {
+		@media (max-width: 768px) {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			overflow: auto;
+			background-color: #141414;
+		}
+		@media (max-width: 992px) {
+			flex: 0 0 30px;
+			display: block;
+		}
+	}
+// .menu__list
+	&__list {
+	}
+// .menu__item
+	&__item {
+	}
+// .menu__link
+	&__link {
+	}
+}
+
+// ======================================================================================
+// burger
+.icon-menu {
+	@media (max-width: 768px) {
+		display: block;
+		position: relative;
+		width: 30px;
+		height: 18px;
+		background-color: #000;
+		cursor: pointer;
+		z-index: 5;
+		span,
+		&::before,
+		&::after {
+			content: ""; 
+			transition: all 0.3s ease 0s;
+			left: 0;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			background-color: #E8AA31;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - 1px);
+		}
+		.menu-open & {
+			span {
+				transform: scale(0);
+			}
+			&::before {
+				transform: rotate(-45deg);
+				top: calc(50% - 1px);
+			}
+			&::after {
+				transform: rotate(45deg);
+				top: calc(50% - 1px);
+			}
+		}
+	}
+}
+//=======================================================================================
+
+.body-header {
+	padding: 10px 0px;
+	background-color: #ecf1f2;
+// .body-header__container
+	&__container {
+		display: flex;
+		min-height: 70px;
+		align-items: center;
+	}
+// .body-header__logo
+	&__logo {
+		font-size: 42px;
+		color: #141414;
+		@media (any-hover: hover) {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+	}
+// .body-header__search
+	&__search {
+		flex: 1 1 auto; // дозволяю розширюватись
+		padding-left: 158px;
+		padding-right: 20px;
+		@media (max-width: 1250px) {
+			padding-left: 20px;
+		}
+	}
+// .body-header__actions
+	// &__actions {
+	// }
+}
+.search-header {
+	max-width: 377px;
+	position: relative;
+// .search-header__btn
+	&__btn {
+		position: absolute;
+		width: 41px;
+		height: 41px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		top: 0;
+		left: 8px;
+		background: transparent;
+		font-size: 16px;
+		color: rgba(0, 0, 0, 0.5);
+		@media (any-hover: hover) {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+	}
+// .search-header__input
+	&__input {
+		width: 100%;
+		height: 41px;
+		background: rgba(7, 7, 7, 0.03);
+		border-radius: 3px;
+		padding: 0px 20px 0px 50px;
+		font-family: 'Montserrat';
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 82.352941%; /* 14/17 */
+	}
+}
+.actions-header {
+
+	&__location {
+	}
+
+	&__phones {
+	}
+
+	&__favorite {
+	}
+
+	&__cart {
+	}
+}
+.phones-header {
+
+	&__items {
+	}
+
+	&__item {
+	}
+
+	&__phone {
+	}
+
+	&__arrow {
+	}
+
+	&__list {
+	}
+
+	&__callback {
+	}
+}
+.popup-link {
+}
+.cart-header {
+
+	&__icon {
+	}
+
+	&__body {
+	}
+
+	&__summ {
+	}
+
+	&__link {
+	}
+}
+.catalog-header {
+
+	&__container {
+	}
+
+	&__menu {
+	}
+}
+.menu-catalog {
+
+	&__list {
+	}
+
+	&__item {
+	}
+
+	&__link {
+	}
+
+	&__sub-menu {
+	}
+}
+.sub-menu-catalog {
+
+	&__container {
+	}
+
+	&__block {
+
+		&_5 {
+		}
+
+		&_2 {
+		}
+	}
+
+	&__category {
+	}
+
+	&__link-category {
+	}
+
+	&__list {
+	}
+
+	&__item {
+	}
+
+	&__link {
+	}
+
+	&__footer {
+	}
+
+	&__all {
+	}
+}
+.popup {
+
+	&__area {
+	}
+
+	&__wrapper {
+	}
+
+	&__content {
+	}
+
+	&__close {
+	}
+
+	&__text {
+	}
+}

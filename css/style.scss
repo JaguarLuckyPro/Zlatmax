@@ -110,7 +110,7 @@ html {
 		font-family: 'Montserrat';
 		font-size: 18px;
 		font-weight: 600;
-		line-height: 111.111111%; /* 20/18 */
+		line-height: 122.222222%; /* 22/18 */
 		// працює на пристроях з мишкою
 		@media (any-hover: hover) {
 			&:hover {
@@ -290,130 +290,404 @@ html {
 		font-family: 'Montserrat';
 		font-size: 14px;
 		font-weight: 500;
-		line-height: 82.352941%; /* 14/17 */
+		line-height: 121.428571%; /* 17/14 */
+		color: rgba(0, 0, 0, 0.7);
+		&::placeholder {
+			color: rgba(0, 0, 0, 0.4);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 }
 .actions-header {
-
+	display: flex;
+	align-items: center;
+	column-gap: 30px;
+	@media (max-width: 1000px) {
+		column-gap: 20px;
+	}
+// .actions-header__location
 	&__location {
+		display: inline-flex;
+		align-items: center;
+		@media (max-width: 1400px) {
+			margin-right: 0;
+		}
+		&::before {
+			font-size: 24px;
+			margin: 0px 10px 0px 0px;
+			color: #000;
+		}
+		color: #000;
+		font-family: 'Montserrat';
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 122.222222%; /* 22/18 */
+		margin: 0px 25px 0px 0px;
+		@media (any-hover: hover) {
+			&:hover {
+				span {
+					text-decoration: underline;
+				}
+			}
+		}
 	}
-
-	&__phones {
-	}
-
+// .actions-header__phones
+	// &__phones {
+	// }
+// .actions-header__favorite
 	&__favorite {
+		font-size: 28px;
+		color: #000;
+		cursor: pointer;
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
-
+// .actions-header__cart
 	&__cart {
+		flex: 0 0 auto;
 	}
 }
 .phones-header {
-
-	&__items {
-	}
-
+// .phones-header__items
+	// &__items {
+	// }
+// .phones-header__item
 	&__item {
+		position: relative;
+		white-space: nowrap; // щоб випадашка не скукожувалась
+		display: flex;
 	}
-
+// .phones-header__phone
 	&__phone {
+		display: flex; // для розширення телефонів
+		white-space: nowrap; // щоб телефони не з'їжджали
+		font-family: 'Montserrat';
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 122.222222%; /* 22/18 */
+		color: #000;
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
-
+// .phones-header__arrow
 	&__arrow {
+		font-size: 10px;
+		color: #E8AA31;
+		padding-left: 17px;
+		transition: all 0.3s ease 0s;
+		&._active {
+			transform: rotate(-180deg);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
-
+// .phones-header__list
 	&__list {
+		position: absolute;
+		top: 100%;
+		width: 100%;
+		left: 0;
+		z-index: 2;
+		background-color: #aaa8a8;
+		padding: 15px;
+		border-radius: 15px;
+		li {
+			&:not(:last-child) {
+				margin-bottom: 8px;
+			}
+		}
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
-
+// .phones-header__callback
 	&__callback {
+		font-family: 'Montserrat';
+		font-size: 18px;
+		font-weight: 700;
+		line-height: 122.222222%; /* 22/18 */
+		color: #E8AA31;
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 }
 .popup-link {
 }
+// попап без JS (попап із JS)
+.popup {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(246, 152,152, 0.3);
+	top: 0;
+	left: 0;
+	opacity: 0; // ховаю попап
+	visibility: hidden; // ховаю попап
+	// відкриття попапа за допомогою target
+	&:target {
+		opacity: 1;
+		visibility: visible;
+	}
+	// для відкриття з JS
+	&.open {
+		opacity: 1;
+		visibility: visible;
+	}
+	overflow-y: auto; // для доступності прокрутки при великій кількості тексту в попапі
+	overflow-x: hidden; // для доступності прокрутки при великій кількості тексту в попапі
+	&:target .popup__content {
+		opacity: 1;
+		// transform: translate(0px, 0%);
+		transform: perspective(700px) translate(0px, 0%) rotateY(0deg) rotateX(0deg);
+	}
+	// для відкриття з JS
+	&.open .popup__content {
+		opacity: 1;
+		// transform: translate(0px, 0%);
+		transform: perspective(700px) translate(0px, 0%) rotateY(0deg) rotateX(0deg);
+	}
+// .popup__area
+	&__area {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+// .popup__wrapper
+	&__wrapper {
+		// min-height: 100%;
+		display: flex;
+		justify-content: center;
+		padding: 40px 20px;
+	}
+// .popup__content
+	&__content {
+		background-color: #fff;
+		max-width: 800px;
+		padding: 35px;
+		position: relative;
+		// анімую контент попапа
+		transition: all 0.8s ease 0s;
+		opacity: 0;
+		// transform: translate(0px, -100%);
+		transform: perspective(700px) translate(0px, -100%) rotateY(65deg) rotateX(45deg);
+	}
+// .popup__close
+	&__close {
+		position: absolute;
+		right: 30px;
+		top: 15px;
+		font-size: 25px;
+		cursor: pointer;
+		background-color: transparent;
+	}
+// .popup__text
+	&__text {
+		font-family: 'Montserrat';
+		font-size: 22px;
+		font-weight: 600;
+		line-height: 100%; /* 22/22 */
+		color: #f55050;
+	}
+}
 .cart-header {
-
+	display: flex;
+	align-items: center;
+	column-gap: 15px;
+// .cart-header__icon
 	&__icon {
+		flex: 0 0 37px;
+		font-size: 35px;
+		position: relative;
+		span {
+			position: absolute;
+			width: 14px;
+			height: 14px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			top: 0;
+			right: 0;
+			background-color: #E8AA31;
+			border-radius: 50%;
+			font-size: 12px;
+			color: #fff;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
-
+// .cart-header__body
 	&__body {
+		font-family: 'Montserrat';
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 125%; /* 20/16 */
+		flex: 0 0 auto;
+		@media (max-width: 1250px) {
+			display: none;
+		}
 	}
-
+// .cart-header__summ
 	&__summ {
+		color: #000;
+		&:not(:last-child) {
+			margin-bottom: 5px;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
-
+// .cart-header__link
 	&__link {
+		color: #E8AA31;
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 }
 .catalog-header {
-
-	&__container {
-	}
-
-	&__menu {
-	}
+	background-color: #141414;
+	box-shadow: 0px 4px 20px rgba(53, 53, 53, 0.18);
+	position: relative;
+// .catalog-header__container
+	// &__container {
+	// }
+// .catalog-header__menu
+	// &__menu {
+	// }
 }
 .menu-catalog {
-
+// .menu-catalog__list
 	&__list {
+		display: flex;
+		gap: 10px;
+		justify-content: space-between;
+		// position: relative;
 	}
-
-	&__item {
-	}
-
+// .menu-catalog__item
+	// &__item {
+	// }
+// .menu-catalog__link
 	&__link {
+		color: #fff;
+		min-height: 70px;
+		padding: 0px 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		position: relative;
+		transition: all 0.3s ease 0s;
+		&::after {
+			content: "";
+			opacity: 0;
+			visibility: hidden;
+			position: absolute;
+			bottom: 0;
+			left: 10px;
+			height: 2px;
+			background-color: #E8AA31;
+			width: calc(100% - 20px);
+			transition: all 0.3s ease 0s;
+		}
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 122.222222%; /* 22/18 */
+		@media (any-hover: hover) {
+			&:hover {
+				color: #E8AA31;
+				&::after {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+		&._sub-menu-active {
+			color: #E8AA31;
+			&::after {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+		// &.sub-menu {}
 	}
-
+// .menu-catalog__sub-menu
 	&__sub-menu {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 100%;
+		background-color: #141414;
+		transition: all 0.3s ease 0s;
 	}
 }
+// .menu-catalog__link:hover {
+// 	&.sub-menu-catalog__block {
+// 		opacity: 1;
+// 		visibility: visible;
+// 	}
+// }
 .sub-menu-catalog {
-
+// .sub-menu-catalog__container
 	&__container {
 	}
-
+// .sub-menu-catalog__block
 	&__block {
-
+// .sub-menu-catalog__block_5
 		&_5 {
 		}
-
+// .sub-menu-catalog__block_2
 		&_2 {
 		}
 	}
-
+// .sub-menu-catalog__category
 	&__category {
 	}
-
+// .sub-menu-catalog__link-category
 	&__link-category {
 	}
-
+// .sub-menu-catalog__list
 	&__list {
 	}
-
-	&__item {
-	}
-
+// .sub-menu-catalog__item
+	// &__item {
+	// }
+// .sub-menu-catalog__link
 	&__link {
 	}
-
+// .sub-menu-catalog__footer
 	&__footer {
 	}
-
+// .sub-menu-catalog__all
 	&__all {
-	}
-}
-.popup {
-
-	&__area {
-	}
-
-	&__wrapper {
-	}
-
-	&__content {
-	}
-
-	&__close {
-	}
-
-	&__text {
 	}
 }

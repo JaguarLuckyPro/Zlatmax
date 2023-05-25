@@ -667,12 +667,12 @@ html {
 		// display: flex;
 		// display: none;
 		display: grid;
-		// for $var from 1 to 6 {
-		// 	&_#{$var} {
-		// 		// justify-items: start;
-		// 		grid-template-columns: repeat($var, minmax(auto, 320px));
-		// 	}
-		// }
+		for $var from 1 to 6 {
+			&_#{$var} {
+				// justify-items: start;
+				grid-template-columns: repeat($var, minmax(auto, 320px));
+			}
+		}
 		&._sub-menu-open {
 			display: grid;
 			grid-template-columns: repeat(5, 1fr);

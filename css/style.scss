@@ -640,9 +640,9 @@ html {
 	}
 // .menu-catalog__sub-menu
 	&__sub-menu {
-		opacity: 0;
-		visibility: hidden;
-		position: absolute;
+		// opacity: 0;
+		// visibility: hidden;
+		// position: absolute;
 		width: 100%;
 		left: 0;
 		top: 100%;
@@ -657,37 +657,101 @@ html {
 // 	}
 // }
 .sub-menu-catalog {
+	// position: absolute;
 // .sub-menu-catalog__container
 	&__container {
+		padding: 0px 10px;
 	}
 // .sub-menu-catalog__block
 	&__block {
+		// display: flex;
+		// display: none;
+		display: grid;
+		// for $var from 1 to 6 {
+		// 	&_#{$var} {
+		// 		// justify-items: start;
+		// 		grid-template-columns: repeat($var, minmax(auto, 320px));
+		// 	}
+		// }
+		&._sub-menu-open {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+		}
+		// opacity: 1;
+		// visibility: visible;
+		// display: none;
+		// &._sub-menu-open {
+		// 	display: flex;
+		// }
+		// &:hover {
+		// 	position: absolute;
+		// 	opacity: 1;
+		// 	visibility: visible;
+		// }
 // .sub-menu-catalog__block_5
-		&_5 {
-		}
+		// &_5 {
+		// }
 // .sub-menu-catalog__block_2
-		&_2 {
-		}
+		// &_2 {
+		// }
 	}
 // .sub-menu-catalog__category
 	&__category {
+		padding: 30px 15px 30px 0px;
 	}
 // .sub-menu-catalog__link-category
 	&__link-category {
+		color: #fff;
+		font-family: 'Montserrat';
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 125%; /* 20/16 */
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 // .sub-menu-catalog__list
 	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		padding: 30px 15px 30px 0px;
+		border-top: 1px solid rgba(255, 255, 255, 0.3);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 	}
 // .sub-menu-catalog__item
 	// &__item {
 	// }
 // .sub-menu-catalog__link
 	&__link {
+		color: #fff;
+		font-family: 'Montserrat';
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 125%; /* 20/16 */
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 // .sub-menu-catalog__footer
 	&__footer {
+		padding: 30px 15px 30px 0px;
 	}
 // .sub-menu-catalog__all
 	&__all {
+		font-family: 'Montserrat';
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 125%; /* 20/16 */
+		color: #E8AA31;
+		@media (any-hover: hover) {
+			&:hvoer {
+				text-decoration: underline;
+			}
+		}
 	}
 }

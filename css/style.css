@@ -549,6 +549,9 @@ html {
   visibility: visible;
 }
 .menu-catalog__sub-menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
   width: 100%;
   left: 0;
   top: 100%;

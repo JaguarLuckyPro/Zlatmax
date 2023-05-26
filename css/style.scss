@@ -84,8 +84,8 @@ html {
 	// &__catalog {
 	// }
 }
-.lock-padding {
-}
+// .lock-padding {
+// }
 .top-header {
 	padding: 10px 0px; // поле безпеки на випадок докидування пунтктів
 // .top-header__container
@@ -168,14 +168,14 @@ html {
 		}
 	}
 // .menu__list
-	&__list {
-	}
+	// &__list {
+	// }
 // .menu__item
-	&__item {
-	}
+	// &__item {
+	// }
 // .menu__link
-	&__link {
-	}
+	// &__link {
+	// }
 }
 
 // ======================================================================================
@@ -430,8 +430,8 @@ html {
 		}
 	}
 }
-.popup-link {
-}
+// .popup-link {
+// }
 // попап без JS (попап із JS)
 .popup {
 	position: fixed;
@@ -667,7 +667,7 @@ html {
 		// display: flex;
 		// display: none;
 		display: grid;
-		for $var from 1 to 6 {
+		@for $var from 1 to 6 {
 			&_#{$var} {
 				// justify-items: start;
 				grid-template-columns: repeat($var, minmax(auto, 320px));

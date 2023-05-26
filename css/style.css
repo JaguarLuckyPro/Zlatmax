@@ -136,6 +136,7 @@ html {
     display: block;
   }
 }
+
 @media (max-width: 768px) {
   .icon-menu {
     display: block;
@@ -564,6 +565,21 @@ html {
 }
 .sub-menu-catalog__block {
   display: grid;
+}
+.sub-menu-catalog__block_1 {
+  grid-template-columns: repeat(1, minmax(auto, 320px));
+}
+.sub-menu-catalog__block_2 {
+  grid-template-columns: repeat(2, minmax(auto, 320px));
+}
+.sub-menu-catalog__block_3 {
+  grid-template-columns: repeat(3, minmax(auto, 320px));
+}
+.sub-menu-catalog__block_4 {
+  grid-template-columns: repeat(4, minmax(auto, 320px));
+}
+.sub-menu-catalog__block_5 {
+  grid-template-columns: repeat(5, minmax(auto, 320px));
 }
 .sub-menu-catalog__block._sub-menu-open {
   display: grid;
